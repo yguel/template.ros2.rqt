@@ -2,13 +2,17 @@
 #define %(UPPER_CASE_PACKAGE_NAME)s__RQT_PLUGIN_HPP_
 
 #include <rqt_gui_cpp/plugin.h>
-#include <ui_%(UNCAPITALIZED_CAMEL_CASE_PACKAGE_NAME)s.h>
 #include <QWidget>
 #include <QMainWindow>
 #include <QTimer>
 #include <memory>
 
 // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): Include the message headers
+
+namespace Ui
+{
+  class %(CAMEL_CASE_PACKAGE_NAME)sMainWindow;
+}
 
 namespace %(PACKAGE_NAME)s
 {
@@ -19,6 +23,7 @@ class %(CAMEL_CASE_PACKAGE_NAME)sPlugin
 
 public:
   %(CAMEL_CASE_PACKAGE_NAME)sPlugin();
+  virtual ~%(CAMEL_CASE_PACKAGE_NAME)sPlugin();
 
   virtual void initPlugin(qt_gui_cpp::PluginContext & context);
   virtual void shutdownPlugin();
@@ -30,7 +35,7 @@ public:
     const qt_gui_cpp::Settings & instance_settings);
 
 private:
-  Ui::%(CAMEL_CASE_PACKAGE_NAME)sMainWindow ui_;
+  Ui::%(CAMEL_CASE_PACKAGE_NAME)sMainWindow *ui_;
   QMainWindow *mw_;
   QTimer * ros_timer_;
   // QTimer * display_timer_;
