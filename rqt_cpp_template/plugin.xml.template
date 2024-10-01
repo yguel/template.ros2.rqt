@@ -1,6 +1,10 @@
 <library path="%(PACKAGE_NAME)s">
-  <class name="%(PACKAGE_NAME)s/%(CAMEL_CASE_PACKAGE_NAME)sPlugin" type="%(PACKAGE_NAME)s::%(CAMEL_CASE_PACKAGE_NAME)sPlugin" base_class_type="rqt_gui_cpp::Plugin">
-    <description>%(PACKAGE_DESCRIPTION)s</description>
+  <class name="%(PACKAGE_NAME)s/%(CAMEL_CASE_PACKAGE_NAME)sPlugin" 
+         type="%(PACKAGE_NAME)s::%(CAMEL_CASE_PACKAGE_NAME)sPlugin" 
+         base_class_type="rqt_gui_cpp::Plugin">
+    <description>
+      %(PACKAGE_DESCRIPTION)s
+    </description>
     <qtgui>
       <group>
         <label>%(LABEL_GROUP)s</label>
