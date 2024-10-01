@@ -1,0 +1,47 @@
+#include <memory>
+#include <sstream>
+#include <string>
+
+#include "rclcpp/rclcpp.hpp"
+
+#include "%(PACKAGE_NAME)s/rqt_node.hpp"
+
+using namespace std::placeholders;
+using namespace std::chrono_literals;
+
+#ifndef CLASSM
+#define CLASSM %(CAMEL_CASE_PACKAGE_NAME)sNode
+#else
+#error alias CLASSM all ready defined!
+#endif
+
+namespace %(PACKAGE_NAME)s
+{
+    CLASSM::%(CAMEL_CASE_PACKAGE_NAME)sNode()
+        : Node("%(PACKAGE_NAME)s")
+    {
+        // Force flush of the stdout buffer
+        setvbuf(stdout, NULL, _IONBF, BUFSIZ);
+
+        // ROS Timer
+        timer_ = this->create_wall_timer(
+            1s,
+            std::bind(&CLASSM::timer_callback, this));
+        RCLCPP_INFO(this->get_logger(), "Initialized RQT node");
+    }
+
+    CLASSM::~%(CAMEL_CASE_PACKAGE_NAME)sNode()
+    {
+        RCLCPP_INFO(this->get_logger(), "Terminated RQT node");
+    }
+
+    void CLASSM::timer_callback()
+    {
+        static int count = 0;
+        RCLCPP_INFO(this->get_logger(), "Node Timer: %%d", count);
+        count++;
+    }
+
+} //  < namespace %(PACKAGE_NAME)s
+
+#undef CLASSM

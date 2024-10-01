@@ -1,0 +1,21 @@
+#ifndef %(UPPER_CASE_PACKAGE_NAME)s__RQT_NODE_HPP_
+#define %(UPPER_CASE_PACKAGE_NAME)s__RQT_NODE_HPP_
+
+
+#include "rclcpp/rclcpp.hpp"
+
+namespace %(PACKAGE_NAME)s
+{
+
+class %(CAMEL_CASE_PACKAGE_NAME)sNode : public rclcpp::Node
+{
+public:
+  %(CAMEL_CASE_PACKAGE_NAME)sNode();
+  virtual ~%(CAMEL_CASE_PACKAGE_NAME)sNode();
+private:
+  rclcpp::TimerBase::SharedPtr timer_;
+  void timer_callback();
+
+};
+}  //  < namespace %(PACKAGE_NAME)s
+#endif  // %(UPPER_CASE_PACKAGE_NAME)s__RQT_NODE_HPP_

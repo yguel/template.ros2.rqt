@@ -1,0 +1,153 @@
+{
+    "variables": [
+        {
+            "name": "PACKAGE_NAME",
+            "type": "string",
+            "description": "Name of the package",
+            "value_example": "rqt_profilobot",
+            "access" : "user input"
+        },
+        {
+            "name": "PACKAGE_VERSION",
+            "type": "string",
+            "validation": "semver",
+            "description": "Version of the package in semantic versioning",
+            "value_example": "0.0.1-stable",
+            "access": "user input"
+        },
+        {
+            "name": "PACKAGE_DESCRIPTION",
+            "type": "string",
+            "description": "Description of the package, a free text",
+            "value_example": "A simple rqt plugin for controlling and monitoring the Profilobot",
+            "access": "user input"
+        },
+        {
+            "name": "PACKAGE_MAINTAINER_EMAIL",
+            "type": "string",
+            "validation": "email",
+            "description": "Email of the maintainer",
+            "value_example": "maintainer@gmail.com",
+            "access": "user input"
+        },
+        {
+            "name": "PACKAGE_MAINTAINER_NAME",
+            "type": "string",
+            "description": "Full name of the maintainer, first name in lower case, capitalized and last name in upper case",
+            "value_example": "Manuel YGUEL",
+            "access": "user input"
+        },
+        {
+            "name": "PACKAGE_LICENSE",
+            "type": "string",
+            "description": "License of the package, ideally one of [\"Apache-2.0\",\"BSL-1.0\",\"BSD-2.0\",\"BSD-2-Clause\",\"BSD-3-Clause\",\"GPL-3.0-only\",\"LGPL-3.0-only\",\"MIT\",\"MIT-0\"]",
+            "value_example": "MIT",
+            "access": "user input"
+        },
+        {
+            "name": "CAMEL_CASE_PACKAGE_NAME",
+            "type": "string",
+            "validation": "camel_case",
+            "function": "camel_case_package_name",
+            "description": "Name of the package in camel case",
+            "value_example": "RqtProfilobot",
+            "access": "function"
+        },
+        {
+            "name": "UNCAPITALIZED_CAMEL_CASE_PACKAGE_NAME",
+            "type": "string",
+            "validation": "uncapitalized_camel_case",
+            "function": "uncapitalized_camel_case_package_name",
+            "description": "Name of the package in camel case without the first letter capitalized",
+            "value_example": "rqtProfilobot",
+            "access": "function"
+        },
+        {
+            "name": "OBJECT_HUMAN_NAME",
+            "type": "string",
+            "description": "Human readable name of the object, in title case",
+            "value_example": "RQT Profilobot UI",
+            "access": "user input"
+        },
+        {
+            "name": "YEAR",
+            "type": "int",
+            "description": "Year of the creation",
+            "function": "current_year",
+            "value_example": 2023,
+            "access": "function"
+        },
+        {
+            "name": "LABORATORY",
+            "type": "string",
+            "description": "Name of the laboratory for copyright",
+            "value_example": "Robotics Laboratory",
+            "access": "user input"
+        },
+        {
+            "name": "LICENSE_TEXT",
+            "type": "string",
+            "function": "license_reference",
+            "description": "Text of the license, corresponding to one of the specified licenses",
+            "value_example": "Standard MIT License Text",
+            "access" : "function"
+        },
+        {
+            "name": "UPPER_CASE_PACKAGE_NAME",
+            "type": "string",
+            "validation": "upper_case",
+            "function": "upper_case_package_name",
+            "description": "Name of the package in upper case",
+            "value_example": "RQT_PROFILOBOT",
+            "access": "function"
+        },
+        {
+            "name": "LABEL_GROUP",
+            "type": "string",
+            "description": "Label of the plugin in the rqt_gui",
+            "value_example": "Robot Control",
+            "default": "Robot Control",
+            "access": "default"
+        },
+        {
+            "name": "ICON_GROUP",
+            "type": "string",
+            "description": "Icon of the plugin in the rqt_gui",
+            "value_example": "folder",
+            "default": "folder",
+            "access": "default"
+        },
+        {
+            "name": "STATUS_TIP_GROUP",
+            "type": "string",
+            "description": "Status tip of the plugin in the rqt_gui",
+            "value_example": "Plugins related to the robot control related to RQT Profilobot UI.",
+            "default": "Plugins related to the robot control related to %(OBJECT_HUMAN_NAME)s",
+            "access": "default"
+        },
+        {
+            "name": "LABEL",
+            "type": "string",
+            "description": "Label of the plugin, usually the same as the object human name",
+            "value_example": "RQT Profilobot UI",
+            "default": "%(OBJECT_HUMAN_NAME)s",
+            "access": "default"
+        },
+        {
+            "name": "ICON",
+            "type": "string",
+            "description": "Icon of the plugin",
+            "value_example": "image-x-generic",
+            "default": "image-x-generic",
+            "access": "default"
+        },
+        {
+            "name": "STATUS_TIP",
+            "type": "string",
+            "description": "Status tip of the plugin, usually the same as the package name with underscores replaced by spaces",
+            "value_example": "An rqt profilobot control panel.",
+            "default": "An %(PACKAGE_NAME)s control panel.",
+            "access": "default"
+        }
+    ]
+}

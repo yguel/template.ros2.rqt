@@ -1,0 +1,76 @@
+#include <QStringList>
+#include <memory>
+#include <thread>
+
+#include "pluginlib/class_list_macros.hpp"
+#include "rclcpp/rclcpp.hpp"
+
+#include "%(PACKAGE_NAME)s/rqt_plugin.hpp"
+
+using std::placeholders::_1;
+
+#ifndef CLASSM
+#define CLASSM %(CAMEL_CASE_PACKAGE_NAME)sPlugin
+#else
+#error alias CLASSM all ready defined!
+#endif
+
+namespace %(PACKAGE_NAME)s
+{
+
+CLASSM::%(CAMEL_CASE_PACKAGE_NAME)sPlugin()
+    :rqt_gui_cpp::Plugin(),
+    mw_(0)
+{
+    setObjectName("%(OBJECT_HUMAN_NAME)s");
+}
+
+void CLASSM::initPlugin(qt_gui_cpp::PluginContext & context)
+{
+  // Access standalone command line arguments
+  QStringList argv = context.argv();
+  // Create QMainWindow
+  mw_ = new QMainWindow();
+  // Extend the widget with all attributes and children from UI file
+  ui_.setupUi(mw_);
+  // Add widget to the user interface
+  if (context.serialNumber() > 1) {
+    mw_->setWindowTitle(
+      mw_->windowTitle() + " (" + QString::number(context.serialNumber()) + ")");
+  }
+  context.addWidget(mw_);
+
+  // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): Create subscribers and publishers here
+
+  // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): Connect signals to slots from and to the UI widgets
+}
+
+void CLASSM::shutdownPlugin()
+{
+  // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): unregister all publishers here
+}
+
+void CLASSM::saveSettings(
+  qt_gui_cpp::Settings & plugin_settings,
+  qt_gui_cpp::Settings & instance_settings) const
+{
+  // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): save intrinsic configuration, usually using:
+  // instance_settings.setValue(k, v)
+  (void) plugin_settings;
+  (void) instance_settings;
+}
+
+void CLASSM::restoreSettings(
+  const qt_gui_cpp::Settings & plugin_settings,
+  const qt_gui_cpp::Settings & instance_settings)
+{
+  // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): restore intrinsic configuration, usually using:
+  // v = instance_settings.value(k)
+  (void) plugin_settings;
+  (void) instance_settings;
+}
+
+}  // < namespace %(PACKAGE_NAME)s
+PLUGINLIB_EXPORT_CLASS(%(PACKAGE_NAME)s::CLASSM, rqt_gui_cpp::Plugin)
+
+#undef CLASSM
