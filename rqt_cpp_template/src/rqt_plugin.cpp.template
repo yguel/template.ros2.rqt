@@ -6,7 +6,6 @@
 #include "rclcpp/rclcpp.hpp"
 
 #include "%(PACKAGE_NAME)s/rqt_plugin.hpp"
-#include "ui_%(UNCAPITALIZED_CAMEL_CASE_PACKAGE_NAME)s.h"
 
 using std::placeholders::_1;
 
@@ -20,16 +19,10 @@ namespace %(PACKAGE_NAME)s
 {
 
 CLASSM::%(CAMEL_CASE_PACKAGE_NAME)sPlugin()
-    :rqt_gui_cpp::Plugin(),
-    ui_(new Ui::%(CAMEL_CASE_PACKAGE_NAME)sMainWindow),
-    mw_(0)
+    :rqt_gui_cpp::Plugin()
+    ,mw_(0)
 {
     setObjectName("%(OBJECT_HUMAN_NAME)s");
-}
-
-CLASSM::~%(CAMEL_CASE_PACKAGE_NAME)sPlugin()
-{
-    delete ui_;
 }
 
 void CLASSM::initPlugin(qt_gui_cpp::PluginContext & context)
@@ -39,7 +32,7 @@ void CLASSM::initPlugin(qt_gui_cpp::PluginContext & context)
   // Create QMainWindow
   mw_ = new QMainWindow();
   // Extend the widget with all attributes and children from UI file
-  ui_->setupUi(mw_);
+  ui_.setupUi(mw_);
   // Add widget to the user interface
   if (context.serialNumber() > 1) {
     mw_->setWindowTitle(

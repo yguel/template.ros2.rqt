@@ -8,5 +8,6 @@
         "--ignore",
         "E402"
     ],
-    "terminal.integrated.scrollback": 100000
+    "terminal.integrated.scrollback": 100000,
+    "workbench.editor.enablePreview": false
 }

@@ -37,9 +37,16 @@ set(src_files
   src/rqt_plugin.cpp
 )
 
+set(qobject_hd_files
+  include/${PROJECT_NAME}/rqt_plugin.hpp
+)
+
+qt5_wrap_cpp(moc_files ${qobject_hd_files})
+
 # Add library
 add_library(${PROJECT_NAME} SHARED
   ${src_files}
+  ${moc_files}
 )
 
 ament_target_dependencies(${PROJECT_NAME} ${dependencies})
