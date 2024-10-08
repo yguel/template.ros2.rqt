@@ -5,9 +5,9 @@
 ## Run 
 How to run the %(PACKAGE_NAME)s gui.
 ```bash
-rqt --standalone %(PACKAGE_NAME)s
+rqt --force-discover --standalone %(PACKAGE_NAME)s
 ```
 or 
 ```bash
-rqt --force-discover --standalone %(PACKAGE_NAME)s
+rqt --force-discover -s %(PACKAGE_NAME)s
 ```
