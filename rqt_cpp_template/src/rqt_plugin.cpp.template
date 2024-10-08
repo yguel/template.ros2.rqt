@@ -33,11 +33,9 @@ void CLASSM::initPlugin(qt_gui_cpp::PluginContext & context)
   mw_ = new QMainWindow();
   // Extend the widget with all attributes and children from UI file
   ui_.setupUi(mw_);
+  // Set the title for the widget (the value in the ui file will be used whatever string is provided as parameter)
+  mw_->setObjectName("");
   // Add widget to the user interface
-  if (context.serialNumber() > 1) {
-    mw_->setWindowTitle(
-      mw_->windowTitle() + " (" + QString::number(context.serialNumber()) + ")");
-  }
   context.addWidget(mw_);
 
   // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): Create subscribers and publishers here
@@ -68,6 +66,9 @@ void CLASSM::restoreSettings(
   // v = instance_settings.value(k)
   (void) plugin_settings;
   (void) instance_settings;
+
+  // Restore the title for the widget (the value in the ui file will be used whatever string is provided as parameter)
+  mw_->setObjectName("");
 }
 
 }  // < namespace %(PACKAGE_NAME)s
