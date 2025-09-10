@@ -19,10 +19,10 @@ namespace %(PACKAGE_NAME)s
 {
 
 CLASSM::%(CAMEL_CASE_PACKAGE_NAME)sPlugin()
-    :rqt_gui_cpp::Plugin()
-    ,mw_(0)
+  : rqt_gui_cpp::Plugin(),
+  mw_(0)
 {
-    setObjectName("%(OBJECT_HUMAN_NAME)s");
+  setObjectName("%(OBJECT_HUMAN_NAME)s");
 }
 
 void CLASSM::initPlugin(qt_gui_cpp::PluginContext & context)
@@ -34,9 +34,28 @@ void CLASSM::initPlugin(qt_gui_cpp::PluginContext & context)
   // Extend the widget with all attributes and children from UI file
   ui_.setupUi(mw_);
   // Set the title for the widget (the value in the ui file will be used whatever string is provided as parameter)
-  mw_->setObjectName("");
+  mw_->setObjectName("%(OBJECT_HUMAN_NAME)s");
   // Add widget to the user interface
   context.addWidget(mw_);
+
+  if (0 == context.serialNumber() ) {
+    // 0 means this is a standalone window
+    // 1 means it is a docked window
+
+    // Defer the standalone check and window title set
+    QTimer::singleShot(
+      0, mw_, [this]() {
+        QWidget * topLevel = mw_;
+        while (topLevel && topLevel->parentWidget()) {
+          topLevel = topLevel->parentWidget();
+        }
+        if (topLevel && topLevel->inherits("QMainWindow")) {
+          topLevel->setWindowTitle(
+            "%(STANDALONE_WINDOW_TITLE)s");
+        }
+      });
+
+  }
 
   // TODO(%(PACKAGE_MAINTAINER_EMAIL)s): Create subscribers and publishers here
 
@@ -68,7 +87,7 @@ void CLASSM::restoreSettings(
   (void) instance_settings;
 
   // Restore the title for the widget (the value in the ui file will be used whatever string is provided as parameter)
-  mw_->setObjectName("");
+  mw_->setObjectName("%(OBJECT_HUMAN_NAME)s");
 }
 
 }  // < namespace %(PACKAGE_NAME)s

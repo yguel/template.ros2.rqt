@@ -9,7 +9,7 @@
             "type": "string",
             "description": "Name of the package",
             "value_example": "rqt_profilobot",
-            "access" : "user input"
+            "access": "user input"
         },
         {
             "name": "PACKAGE_VERSION",
@@ -74,6 +74,13 @@
             "access": "user input"
         },
         {
+            "name": "STANDALONE_WINDOW_TITLE",
+            "type": "string",
+            "description": "Title of the standalone window",
+            "value_example": "RQT Profilobot Control",
+            "access": "user input"
+        },
+        {
             "name": "YEAR",
             "type": "int",
             "description": "Year of the creation",
@@ -94,7 +101,7 @@
             "function": "license_reference",
             "description": "Text of the license, corresponding to one of the specified licenses",
             "value_example": "Standard MIT License Text",
-            "access" : "function"
+            "access": "function"
         },
         {
             "name": "UPPER_CASE_PACKAGE_NAME",
